@@ -1,0 +1,99 @@
+---
+const { file, baseUrl, thumbnailExtension } = Astro.props;
+
+const filename = file.filename;
+const parts = filename.split('_');
+const datePart = parts[1] || '';
+const timePart = parts[2] || '';
+const creatorPart = parts[3] || '';
+
+const year = datePart.substring(0, 4);
+const month = datePart.substring(4, 6);
+const day = datePart.substring(6, 8);
+
+const hour = timePart.substring(0, 2);
+const minute = timePart.substring(2, 4);
+
+const creator = creatorPart.replace('.glb', ' ').replaceAll('-', ' ');
+
+const formattedDateTime = datePart && timePart ? `${day}.${year.substring(2)}.${month} ${hour}:${minute}` : 'N/A';
+
+const thumbnailUrl = `${baseUrl}${filename.replace('.glb', thumbnailExtension)}`;
+const fileUrl = `${baseUrl}${filename}`;
+---
+
+<div class="card h-100">
+  <img src={thumbnailUrl} class="card-img-top" alt={`Thumbnail for ${filename}`}>
+  <div class="card-body">
+    <h5 class="card-title" title={filename}>{filename}</h5>
+    <p class="card-text">{formattedDateTime} • {creator}</p>
+  </div>
+  <div class="btn-group" role="group">
+    <a href={`https://j0nesyes.github.io/moxr-glb-viewer/?file=${filename}`} class="btn btn-secondary" target="_blank" rel="noopener noreferrer">View in 3D</a>
+    <a href={fileUrl} class="btn" target="_blank" rel="noopener noreferrer">Download</a>
+  </div>
+</div>
+<style>
+
+  .card {
+    border: none;
+    border-radius: 1rem;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    font-family: Inter, sans-serif;
+  }
+  .card-img-top {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    object-fit: cover;
+    height: 200px;
+  }
+  .card-body{
+    flex-grow: 1;
+    padding: 0 1rem;
+  }
+
+  .card-title {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .card-text {
+    color: #666;
+    font-size: 0.9rem;
+  }
+  .btn-group {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.25rem;
+  }
+  .btn {
+    text-decoration: none;
+    text-align: center;
+    border-radius: 0;
+    margin: 0.25rem 0;
+  }
+  .btn:first-child {
+    margin-left: 0.25rem;
+    background-color: #0e0e0e;
+    color: white;
+    padding: 0.5rem 0;
+    border-bottom-left-radius: 1.25rem;
+    border-top-left-radius: 1.25rem;
+  }
+  .btn:last-child {
+    margin-right: 0.25rem;
+    background-color: #efefef;
+    color: #0e0e0e;
+    padding: 0.5rem;
+    text-decoration: none;
+    text-align: center;
+    border-bottom-right-radius: 1rem;
+    border-top-right-radius: 1rem;
+  }
+</style>

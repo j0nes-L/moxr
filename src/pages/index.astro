@@ -1,0 +1,14 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro"
+import HeroMain from "../components/HeroMain.astro"
+import Head from "../components/Head.astro"
+import MOXRGlbExplorer from "../components/MOXRGlbExplorer.astro"
+---
+
+<BaseLayout>
+    <Head slot="head"/>
+    <HeroMain/>
+        <section slot="main" id="explorer">
+            <MOXRGlbExplorer/>
+        </section>
+</BaseLayout>
