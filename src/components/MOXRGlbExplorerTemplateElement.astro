@@ -1,5 +1,5 @@
 ---
-const { file, baseUrl, thumbnailExtension } = Astro.props;
+const {file, baseUrl, thumbnailExtension} = Astro.props;
 
 const filename = file.filename;
 const parts = filename.split('_');
@@ -16,7 +16,27 @@ const minute = timePart.substring(2, 4);
 
 const creator = creatorPart.replace('.glb', ' ').replaceAll('-', ' ');
 
-const formattedDateTime = datePart && timePart ? `${day}.${year.substring(2)}.${month} ${hour}:${minute}` : 'N/A';
+const formattedDateTime = datePart && timePart ? `${day}.${month}.${year} ${hour}:${minute}` : 'N/A';
+
+let daysAgo = '';
+if (datePart) {
+  const fileDate = new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
+  const today = new Date();
+
+  fileDate.setHours(0, 0, 0, 0);
+  today.setHours(0, 0, 0, 0);
+
+  const diffTime = today.getTime() - fileDate.getTime();
+  const diffDays = Math.round(diffTime / (1000 * 60 * 60 * 24));
+
+  if (diffDays === 0) {
+    daysAgo = 'heute';
+  } else if (diffDays === 1) {
+    daysAgo = 'gestern';
+  } else if (diffDays > 1) {
+    daysAgo = `vor ${diffDays} Tagen`;
+  }
+}
 
 const thumbnailUrl = `${baseUrl}${filename.replace('.glb', thumbnailExtension)}`;
 const fileUrl = `${baseUrl}${filename}`;
@@ -25,7 +45,7 @@ const fileUrl = `${baseUrl}${filename}`;
 <div class="card h-100">
   <img src={thumbnailUrl} class="card-img-top" alt={`Thumbnail for ${filename}`}>
   <div class="card-body">
-    <h5 class="card-title" title={filename}>{filename}</h5>
+    <h5 class="card-title" title={filename}>3D-Skizze von {daysAgo}</h5>
     <p class="card-text">{formattedDateTime} • {creator}</p>
   </div>
   <div class="btn-group" role="group">
