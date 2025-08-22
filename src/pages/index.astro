@@ -4,6 +4,7 @@ import HeroMain from "../components/HeroMain.astro"
 import Head from "../components/Head.astro"
 import MOXRGlbExplorer from "../components/MOXRGlbExplorer.astro"
 import '../styles/main.css';
+import { urls } from "../config";
 ---
 
 <BaseLayout>
@@ -27,9 +28,9 @@ import '../styles/main.css';
 
     <div slot="footer-main">
         <img src="assets/logo-mind-objects.svg" alt="Logo Mind-Objects" draggable="false" style="height: 100px;"/>
-        <p><a href="https://mind-objects.com/imprint/">Legal Notice</a></p>
+        <p><a href={urls.mindObjectsImprint}>Legal Notice</a></p>
     </div>
     <div slot="footer-bottom">
-        <p>Website designed and developed by <a href="https://icu-media.xyz/">icu-media</a></p>
+        <p>Website designed and developed by <a href={urls.icuMedia}>icu-media</a></p>
     </div>
 </BaseLayout>
