@@ -15,6 +15,36 @@
             const grid = document.getElementById("explorer-grid");
             grid.innerHTML = "";
 
+            // Sort files so newest are displayed first
+            files.sort((a, b) => {
+                const partsA = a.filename.split('_');
+                const partsB = b.filename.split('_');
+
+                const datePartA = partsA[1];
+                const timePartA = partsA[2];
+                const dateA = new Date(
+                    parseInt(datePartA.substring(0,4)),
+                    parseInt(datePartA.substring(4,6)) - 1,
+                    parseInt(datePartA.substring(6,8)),
+                    parseInt(timePartA.substring(0,2)),
+                    parseInt(timePartA.substring(2,4)),
+                    parseInt(timePartA.substring(4,6))
+                );
+
+                const datePartB = partsB[1];
+                const timePartB = partsB[2];
+                const dateB = new Date(
+                    parseInt(datePartB.substring(0,4)),
+                    parseInt(datePartB.substring(4,6)) - 1,
+                    parseInt(datePartB.substring(6,8)),
+                    parseInt(timePartB.substring(0,2)),
+                    parseInt(timePartB.substring(2,4)),
+                    parseInt(timePartB.substring(4,6))
+                );
+
+                return dateB - dateA; // newest first
+            });
+
             function formatFile(file) {
                 const filename = file.filename;
                 const parts = filename.split('_');
@@ -42,9 +72,13 @@
                     const diffTime = today.getTime() - fileDate.getTime();
                     const diffDays = Math.round(diffTime / (1000 * 60 * 60 * 24));
 
-                    if (diffDays === 0) daysAgo = 'heute';
-                    else if (diffDays === 1) daysAgo = 'gestern';
-                    else if (diffDays > 1) daysAgo = `vor ${diffDays} Tagen`;
+                    if (diffDays === 0) daysAgo = 'today';
+                    else if (diffDays === 1) daysAgo = 'yesterday';
+                    else if (diffDays === 2) daysAgo = 'the day before yesterday';
+                    else if (diffDays < 7) daysAgo = `vor ${diffDays} Tagen`;
+                    else if (diffDays < 30) daysAgo = `vor ${Math.floor(diffDays / 7)} Wochen`;
+                    else if (diffDays < 365) daysAgo = `vor ${Math.floor(diffDays / 30)} Monaten`;
+                    else if (diffDays >= 365) daysAgo = `vor ${Math.floor(diffDays / 365)} Jahren`;
                 }
 
                 const thumbnailUrl = `${baseUrl}${filename.replace('.glb', thumbnailExtension)}`;
@@ -60,10 +94,10 @@
                 col.className = "col";
                 col.innerHTML = `
           <div class="card h-100">
-            <img src="${thumbnailUrl}" class="card-img-top" alt="Thumbnail for ${filename}" />
+            <img src="${thumbnailUrl}" class="card-img-top" alt="Thumbnail for ${filename}" draggable="false" style="user-select: none; -webkit-user-drag: none;" />
             <div class="card-body">
-              <h5 class="card-title" title="${filename}">3D-Skizze von ${daysAgo}</h5>
-              <p class="card-text">${formattedDateTime} • ${creator}</p>
+              <h5 class="card-title" title="${filename}">3D-Sketch from ${daysAgo}</h5>
+              <p class="card-text">${creator}</p>
             </div>
             <div class="btn-group" role="group">
               <a href="https://j0nesyes.github.io/moxr-glb-viewer/?file=${filename}" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">View in 3D</a>
@@ -102,7 +136,7 @@
 
 .card {
     border: none;
-    border-radius: 1rem;
+    border-radius: 0.5rem;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     display: flex;
     flex-direction: column;
@@ -122,8 +156,8 @@
     }
 
 .card-title {
+    margin: 0.8rem 0 0.25rem 0;
     font-weight: bold;
-    margin-bottom: 0.5rem;
     font-size: 1rem;
     white-space: nowrap;
     overflow: hidden;
@@ -132,14 +166,14 @@
 
 .card-text {
     color: #666;
-    font-size: 0.9rem;
+    margin: 0.25rem 0 0.5rem 0;
+    font-size: 0.8rem;
     }
 
 .btn-group {
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 0.25rem;
     }
 
 .btn {
@@ -147,6 +181,8 @@
     text-align: center;
     border-radius: 0;
     margin: 0.25rem 0;
+    font-family: Inter, sans-serif;
+
     }
 
 .btn:first-child {
@@ -154,8 +190,9 @@
     background-color: #0e0e0e;
     color: white;
     padding: 0.5rem 0;
-    border-bottom-left-radius: 1.25rem;
-    border-top-left-radius: 1.25rem;
+    border-bottom-left-radius: 0.563rem;
+    border-top-left-radius: 0.563rem;
+    font-weight: 500;
     }
 
 .btn:last-child {
@@ -165,7 +202,8 @@
     padding: 0.5rem;
     text-decoration: none;
     text-align: center;
-    border-bottom-right-radius: 1rem;
-    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 0.563rem;
+    border-top-right-radius: 0.563rem;
+    font-weight: 400;
     }
 </style>
