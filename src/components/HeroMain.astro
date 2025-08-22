@@ -1,10 +1,11 @@
 ---
 import ArrowDownAnim from "./ArrowDownAnim.astro";
+import { urls } from "../config";
 ---
 <div style="position: relative; width: 100%; height: 100vh; overflow: hidden;">
     <canvas id="canvas"></canvas>
     <div id="hero-logo-wrapper">
-        <a href="https://j0nesyes.github.io/moxr-glb">
+        <a href={urls.moxr}>
             <img id="hero-logo" src="assets/logo-mind-objects.svg" alt="Logo Mind-Objects" draggable="false"/>
         </a>
 </div>
@@ -13,7 +14,7 @@ import ArrowDownAnim from "./ArrowDownAnim.astro";
     <h2 id="subtitle">A tool for visualizing your thoughts</h2>
 </div>
 <div id="button-wrapper">
-    <a id="hero-button" href="https://j0nesyes.github.io/moxr-glb/#explorer">
+    <a id="hero-button" href={urls.moxrExplorer}>
         <span id="button-text">View Drawings</span>
     </a>
 </div>
