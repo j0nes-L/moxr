@@ -1,7 +1,14 @@
 ---
-import { urls } from "../config";
+import { urls as configUrls } from "../config";
+interface Props {
+  urls: typeof configUrls;
+}
+const { urls } = Astro.props;
 ---
 <div class="explorer-container">
+    <script>
+        window.appUrls = { ...urls };
+    </script>
     <div class="row" id="explorer-grid"></div>
     <div id="load-more-container" style="text-align: center; padding: 20px;"></div>
 </div>
@@ -73,7 +80,7 @@ import { urls } from "../config";
           <p class="card-text">${creator}</p>
         </div>
         <div class="btn-group" role="group">
-          <a href={``${urls.moxrGlbViewer}${filename}``} class="btn btn-secondary" target="_blank" rel="noopener noreferrer">View in 3D</a>
+          <a href={``${window.appUrls.moxrGlbViewer}${filename}``} class="btn btn-secondary" target="_blank" rel="noopener noreferrer">View in 3D</a>
           <a href="${fileUrl}" class="btn" target="_blank" rel="noopener noreferrer">Download</a>
         </div>
       </div>
