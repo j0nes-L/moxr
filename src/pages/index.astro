@@ -10,7 +10,6 @@ import { urls } from "../config";
 <BaseLayout>
     <Head slot="head"/>
     <HeroMain slot="header"/>
-
     <section slot="main" id="about">
         <h2>About Mind-Objects XR</h2>
         <p>
@@ -21,10 +20,9 @@ import { urls } from "../config";
             The app focuses on simplicity and speed, turning ideas into immersive prototypes within minutes.
         </p>
     </section>
-
     <section slot="main" id="explorer">
-        <MOXRGlbExplorer client:load urls={urls}/>
-    </section>move
+        <MOXRGlbExplorer/>
+    </section>
 
     <div slot="footer-main">
         <img src="assets/logo-mind-objects.svg" alt="Logo Mind-Objects" draggable="false" style="height: 100px;"/>
