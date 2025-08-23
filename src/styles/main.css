@@ -5,7 +5,7 @@ body {
     height: 100%;
     scroll-behavior: smooth;
 
-    background-image: radial-gradient(rgba(143, 143, 143, 0.5) 0.5px, #ffffff 0.5px);
+    background-image: radial-gradient(rgba(143, 143, 143, 0.15) 1px, #ffffff 1px);
     background-size: 1rem 1rem;
 }
 
