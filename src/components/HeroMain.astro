@@ -1,6 +1,6 @@
 ---
 import ArrowDownAnim from "./ArrowDownAnim.astro";
-import { urls } from "../config";
+import {urls} from "../config";
 ---
 <div style="position: relative; width: 100%; height: 100vh; overflow: hidden;">
     <canvas id="canvas"></canvas>
@@ -8,22 +8,21 @@ import { urls } from "../config";
         <a href={urls.moxr}>
             <img id="hero-logo" src="assets/logo-mind-objects.svg" alt="Logo Mind-Objects" draggable="false"/>
         </a>
+    </div>
+    <div class="text-container">
+        <h1 id="title">Mind-Objects XR</h1>
+        <h2 id="subtitle">A tool for visualizing your thoughts.</h2>
+    </div>
+    <div id="button-wrapper">
+        <a id="hero-button" href={urls.moxr + "#explorer"}>
+            <span id="button-text">View Drawings</span>
+        </a>
+    </div>
+    <div class="down-arrow">
+        <ArrowDownAnim/>
+    </div>
 </div>
-<div class="text-container">
-    <h1 id="title">Mind-Objects XR</h1>
-    <h2 id="subtitle">A tool for visualizing your thoughts.</h2>
-</div>
-<div id="button-wrapper">
-    <a id="hero-button" href={urls.moxr + "#explorer"}>
-        <span id="button-text">View Drawings</span>
-    </a>
-</div>
-<div class="down-arrow">
-    <ArrowDownAnim/>
-</div>
-
-</div>
-
+<div class="temp-spacer" style="height: 1rem; width: 100vw; background-color: black;"></div>
 
 <script>
     const canvas = document.getElementById('canvas');
