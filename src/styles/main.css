@@ -177,17 +177,12 @@ section#about {
     padding: 20px;
 }
 
-.row-Explorer {
+.grid-Explorer {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
     justify-content: center;
     background-color: aqua;
-}
-
-.col-Explorer {
-    max-width: 100%;
-    background-color: aquamarine;
 }
 
 .card-explorer-link {

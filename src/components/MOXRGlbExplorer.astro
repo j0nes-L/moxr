@@ -9,7 +9,7 @@ const { urls } = Astro.props;
     <script>
         window.appUrls = { ...urls };
     </script>
-    <div class="row-Explorer" id="explorer-grid"></div>
+    <div class="grid-Explorer" id="grid-Explorer"></div>
     <div id="load-more-container" style="text-align: center; padding: 20px;"></div>
 </div>
 
@@ -64,16 +64,15 @@ const { urls } = Astro.props;
     }
 
     function appendFiles(filesToAppend) {
-        const grid = document.getElementById("explorer-grid");
+        const grid = document.getElementById("grid-Explorer");
         filesToAppend.forEach(file => {
             const {filename, creator, formattedDateTime, daysAgo, thumbnailUrl, fileUrl} =
                 formatFile(file);
 
             const col = document.createElement("div");
-            col.className = "col-Explorer";
+            col.className = "card-Explorer";
             col.innerHTML = `
       
-        <div class="card-Explorer">
           <a href="https://j0nes-l.github.io/moxr-glb-viewer/?file=${filename}" class="card-explorer-link" target="_blank" rel="noopener noreferrer">
             <p class="card-img-text">click to view in 3D</p>
             <img src="${thumbnailUrl}" class="card-img-top" alt="Thumbnail for ${filename}" draggable="false" style="user-select: none; -webkit-user-drag: none;" loading="lazy" />
@@ -83,7 +82,6 @@ const { urls } = Astro.props;
               <p class="card-title" title="${filename}">3D-Sketch from ${daysAgo}</p>
               <p class="card-description">${creator}</p>
           </div>
-        </div>
     `;
             grid.appendChild(col);
         });
@@ -156,7 +154,7 @@ const { urls } = Astro.props;
 
         } catch (err) {
             console.error(err);
-            document.getElementById("explorer-grid").innerHTML = "<p>Fehler beim Laden der Zeichnungen.</p>";
+            document.getElementById("grid-Explorer").innerHTML = "<p>Error loading the drawings.</p>";
         }
     }
 
