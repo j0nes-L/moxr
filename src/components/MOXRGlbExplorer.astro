@@ -5,11 +5,8 @@ interface Props {
 }
 const { urls } = Astro.props;
 ---
-<div class="explorer-container">
-    <script>
-        window.appUrls = { ...urls };
-    </script>
-    <div class="row" id="explorer-grid"></div>
+<div class="container-Explorer">
+    <div class="grid-Explorer" id="grid-Explorer"></div>
     <div id="load-more-container" style="text-align: center; padding: 20px;"></div>
 </div>
 
@@ -19,9 +16,25 @@ const { urls } = Astro.props;
     let thumbnailExtension = '';
     let currentIndex = 0;
 
-    const isMobile = window.innerWidth < 768;
-    const initialLoadCount = isMobile ? 3 : 10;
-    const loadMoreCount = 5;
+    const windowWidth = window.innerWidth;
+    const isMobile = windowWidth < 768;
+
+    let initialLoadCount;
+    let loadMoreCount;
+
+    if (isMobile) {
+        initialLoadCount = 3;
+        loadMoreCount = 0; // No "load more" for mobile
+    } else if (windowWidth < 940) {
+        initialLoadCount = 6;
+        loadMoreCount = 3;
+    } else if (windowWidth < 1160) {
+        initialLoadCount = 8;
+        loadMoreCount = 4;
+    } else {
+        initialLoadCount = 10;
+        loadMoreCount = 5;
+    }
 
     function formatFile(file) {
         const filename = file.filename;
@@ -29,7 +42,6 @@ const { urls } = Astro.props;
         const datePart = parts[1] || '';
         const timePart = parts[2] || '';
         const creatorPart = parts[3] || '';
-
         const year = datePart.substring(0, 4);
         const month = datePart.substring(4, 6);
         const day = datePart.substring(6, 8);
@@ -52,7 +64,6 @@ const { urls } = Astro.props;
 
             if (diffDays === 0) daysAgo = 'today';
             else if (diffDays === 1) daysAgo = 'yesterday';
-            else if (diffDays === 2) daysAgo = 'the day before yesterday';
             else if (diffDays < 7) daysAgo = `${diffDays} days ago`;
             else if (diffDays < 30) daysAgo = `${Math.floor(diffDays / 7)} weeks ago`;
             else if (diffDays < 365) daysAgo = `${Math.floor(diffDays / 30)} months ago`;
@@ -65,25 +76,27 @@ const { urls } = Astro.props;
     }
 
     function appendFiles(filesToAppend) {
-        const grid = document.getElementById("explorer-grid");
+        const grid = document.getElementById("grid-Explorer");
         filesToAppend.forEach(file => {
             const {filename, creator, formattedDateTime, daysAgo, thumbnailUrl, fileUrl} =
                 formatFile(file);
 
             const col = document.createElement("div");
-            col.className = "col";
+            col.className = "card-Explorer";
             col.innerHTML = `
-      <div class="card h-100">
-        <img src="${thumbnailUrl}" class="card-img-top" alt="Thumbnail for ${filename}" draggable="false" style="user-select: none; -webkit-user-drag: none;" loading="lazy" />
-        <div class="card-body">
-          <p class="card-title" title="${filename}">3D-Sketch from ${daysAgo}</p>
-          <p class="card-text">${creator}</p>
-        </div>
-        <div class="btn-group" role="group">
-          <a href="https://j0nes-l.github.io/moxr-glb-viewer/?file=${filename}" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">View in 3D</a>
-          <a href="${fileUrl}" class="btn" target="_blank" rel="noopener noreferrer">Download</a>
-        </div>
-      </div>
+      
+          <a href="https://j0nes-l.github.io/moxr-glb-viewer/?file=${filename}" class="card-explorer-link" target="_blank" rel="noopener noreferrer">
+            <p class="card-img-text">click to view in 3D</p>
+            <img src="${thumbnailUrl}" class="card-img-top" alt="Thumbnail for ${filename}" draggable="false" style="user-select: none; -webkit-user-drag: none;" loading="lazy" />
+          </a>
+          <div class="card-body">
+              <div class="card-text">
+              <p class="card-title" title="${filename}">3D-Sketch from ${daysAgo}</p>
+              <p class="card-description">${creator}</p>
+              <a href="https://j0nes-l.github.io/moxr-glb-viewer/?file=${filename}" class="card-explorer-btn" target="_blank" rel="noopener noreferrer">
+                  <p class="card-btn-text">View in 3D</p>
+                </a>
+          </div>
     `;
             grid.appendChild(col);
         });
@@ -156,7 +169,7 @@ const { urls } = Astro.props;
 
         } catch (err) {
             console.error(err);
-            document.getElementById("explorer-grid").innerHTML = "<p>Fehler beim Laden der Zeichnungen.</p>";
+            document.getElementById("grid-Explorer").innerHTML = "<p>Error loading the drawings.</p>";
         }
     }
 
