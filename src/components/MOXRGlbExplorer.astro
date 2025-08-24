@@ -6,9 +6,6 @@ interface Props {
 const { urls } = Astro.props;
 ---
 <div class="container-Explorer">
-    <script>
-        window.appUrls = { ...urls };
-    </script>
     <div class="grid-Explorer" id="grid-Explorer"></div>
     <div id="load-more-container" style="text-align: center; padding: 20px;"></div>
 </div>
@@ -19,9 +16,25 @@ const { urls } = Astro.props;
     let thumbnailExtension = '';
     let currentIndex = 0;
 
-    const isMobile = window.innerWidth < 768;
-    const initialLoadCount = isMobile ? 3 : 10;
-    const loadMoreCount = 5;
+    const windowWidth = window.innerWidth;
+    const isMobile = windowWidth < 768;
+
+    let initialLoadCount;
+    let loadMoreCount;
+
+    if (isMobile) {
+        initialLoadCount = 3;
+        loadMoreCount = 0; // No "load more" for mobile
+    } else if (windowWidth < 940) {
+        initialLoadCount = 6;
+        loadMoreCount = 3;
+    } else if (windowWidth < 1160) {
+        initialLoadCount = 8;
+        loadMoreCount = 4;
+    } else {
+        initialLoadCount = 10;
+        loadMoreCount = 5;
+    }
 
     function formatFile(file) {
         const filename = file.filename;
@@ -29,7 +42,6 @@ const { urls } = Astro.props;
         const datePart = parts[1] || '';
         const timePart = parts[2] || '';
         const creatorPart = parts[3] || '';
-
         const year = datePart.substring(0, 4);
         const month = datePart.substring(4, 6);
         const day = datePart.substring(6, 8);
@@ -81,6 +93,9 @@ const { urls } = Astro.props;
               <div class="card-text">
               <p class="card-title" title="${filename}">3D-Sketch from ${daysAgo}</p>
               <p class="card-description">${creator}</p>
+              <a href="https://j0nes-l.github.io/moxr-glb-viewer/?file=${filename}" class="card-explorer-btn" target="_blank" rel="noopener noreferrer">
+                  <p class="card-btn-text">View in 3D</p>
+                </a>
           </div>
     `;
             grid.appendChild(col);
