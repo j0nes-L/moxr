@@ -5,11 +5,11 @@ interface Props {
 }
 const { urls } = Astro.props;
 ---
-<div class="explorer-container">
+<div class="container-Explorer">
     <script>
         window.appUrls = { ...urls };
     </script>
-    <div class="row" id="explorer-grid"></div>
+    <div class="row-Explorer" id="explorer-grid"></div>
     <div id="load-more-container" style="text-align: center; padding: 20px;"></div>
 </div>
 
@@ -52,7 +52,6 @@ const { urls } = Astro.props;
 
             if (diffDays === 0) daysAgo = 'today';
             else if (diffDays === 1) daysAgo = 'yesterday';
-            else if (diffDays === 2) daysAgo = 'the day before yesterday';
             else if (diffDays < 7) daysAgo = `${diffDays} days ago`;
             else if (diffDays < 30) daysAgo = `${Math.floor(diffDays / 7)} weeks ago`;
             else if (diffDays < 365) daysAgo = `${Math.floor(diffDays / 30)} months ago`;
@@ -71,19 +70,20 @@ const { urls } = Astro.props;
                 formatFile(file);
 
             const col = document.createElement("div");
-            col.className = "col";
+            col.className = "col-Explorer";
             col.innerHTML = `
-      <div class="card h-100">
-        <img src="${thumbnailUrl}" class="card-img-top" alt="Thumbnail for ${filename}" draggable="false" style="user-select: none; -webkit-user-drag: none;" loading="lazy" />
-        <div class="card-body">
-          <p class="card-title" title="${filename}">3D-Sketch from ${daysAgo}</p>
-          <p class="card-text">${creator}</p>
+      
+        <div class="card-Explorer">
+          <a href="https://j0nes-l.github.io/moxr-glb-viewer/?file=${filename}" class="card-explorer-link" target="_blank" rel="noopener noreferrer">
+            <p class="card-img-text">click to view in 3D</p>
+            <img src="${thumbnailUrl}" class="card-img-top" alt="Thumbnail for ${filename}" draggable="false" style="user-select: none; -webkit-user-drag: none;" loading="lazy" />
+          </a>
+          <div class="card-body">
+              <div class="card-text">
+              <p class="card-title" title="${filename}">3D-Sketch from ${daysAgo}</p>
+              <p class="card-description">${creator}</p>
+          </div>
         </div>
-        <div class="btn-group" role="group">
-          <a href="https://j0nes-l.github.io/moxr-glb-viewer/?file=${filename}" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">View in 3D</a>
-          <a href="${fileUrl}" class="btn" target="_blank" rel="noopener noreferrer">Download</a>
-        </div>
-      </div>
     `;
             grid.appendChild(col);
         });
