@@ -116,7 +116,7 @@ const { urls } = Astro.props;
         if (!isMobile && currentIndex < allFiles.length) {
             const button = document.createElement('button');
             button.textContent = 'Load more';
-            button.className = 'btn-load-more';
+            button.className = 'btn btn-Primary';
             button.addEventListener('click', loadMoreFiles);
             container.appendChild(button);
         }
