@@ -1,6 +1,17 @@
 ---
 import ArrowDownAnim from "./ArrowDownAnim.astro";
 import {urls} from "../config";
+
+interface Props {
+    heading: string;
+    subheading: string;
+    primaryButtonText: string;
+    primaryButtonHref: string;
+    secondaryButtonText: string;
+    secondaryButtonHref: string;
+}
+
+const { heading, subheading, primaryButtonText, primaryButtonHref, secondaryButtonText, secondaryButtonHref } = Astro.props;
 ---
 <div style="position: relative; width: 100%; height: 100vh; overflow: hidden;">
     <canvas id="hero-Canvas"></canvas>
@@ -10,15 +21,15 @@ import {urls} from "../config";
         </a>
     </div>
     <div class="hero-Text-Container">
-        <h1>Mind-Objects XR</h1>
-        <h2>A tool for visualizing your thoughts.</h2>
+        <h1>{heading}</h1>
+        <h2>{subheading}</h2>
     </div>
     <div id="hero-Button-Wrapper">
-        <a class="btn btn-Primary" id="hero-Button" href={urls.metaBeta} target="_blank">
-            <span id="hero-Button-Text">Join Beta</span>
+        <a class="btn btn-Primary" id="hero-Button" href={primaryButtonHref} target="_blank">
+            <span id="hero-Button-Text">{primaryButtonText}</span>
         </a>
-        <a class="btn btn-Secondary" id="hero-Button" href={urls.moxr + "#explorer"}>
-            <span id="hero-Button-Text">View 3D-Sketches</span>
+        <a class="btn btn-Secondary" id="hero-Button" href={secondaryButtonHref}>
+            <span id="hero-Button-Text">{secondaryButtonText}</span>
         </a>
     </div>
     <div class="down-arrow">

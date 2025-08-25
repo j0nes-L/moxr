@@ -5,27 +5,33 @@ import Head from "../../components/Head.astro"
 import MOXRGlbExplorer from "../../components/MOXRGlbExplorer.astro"
 import LanguageSwitch from "../../components/languageSwitch.astro";
 import '../../styles/main.css';
-import { urls } from "../../config";
-import { i18nUtils } from '../../i18n/i18nUtils.js';
+import {urls} from "../../config";
+import {i18nUtils} from '../../i18n/i18nUtils.js';
 
 export function getStaticPaths() {
     return [
-        { params: { lang: 'de' } },
-        { params: { lang: 'en' } },
+        {params: {lang: 'de'}},
+        {params: {lang: 'en'}},
     ];
 }
 
-const { lang } = Astro.params;
+const {lang} = Astro.params;
 const t = i18nUtils.getTranslations(lang);
 const pageTitle = t.common.siteTitle;
 ---
 
 <BaseLayout title={pageTitle} lang={lang}>
     <div style="position: absolute; top: 1rem; right: 1rem; z-index: 10;">
-        <LanguageSwitch lang={lang} slug="" />
+        <LanguageSwitch lang={lang} slug=""/>
     </div>
     <Head slot="head"/>
-    <HeroMain slot="hero"/>
+    <HeroMain slot="hero"
+              heading={t.indexPage.heroMain.heading}
+              subheading={t.indexPage.heroMain.subheading}
+              primaryButtonText={t.indexPage.heroMain.primaryButtonText}
+              primaryButtonHref={urls.metaBeta}
+              secondaryButtonText={t.indexPage.heroMain.secondaryButtonText}
+              secondaryButtonHref={urls.moxr + "#explorer"}/>
     <section id="about">
         <h2>{t.indexPage.aboutTitle}</h2>
         <p>{t.indexPage.aboutParagraph1}</p>
@@ -33,14 +39,18 @@ const pageTitle = t.common.siteTitle;
         <p>{t.indexPage.aboutParagraph3}</p>
     </section>
     <section id="explorer">
-        <MOXRGlbExplorer/>
+        <MOXRGlbExplorer clickToViewText={t.indexPage.explorerPage.clickToViewText}
+                         sketchFromText={t.indexPage.explorerPage.sketchFromText}
+                         viewIn3DText={t.indexPage.explorerPage.viewIn3DText}
+                         loadMoreText={t.indexPage.explorerPage.loadMoreText}
+                         errorLoadingText={t.indexPage.explorerPage.errorLoadingText}/>
     </section>
 
     <div slot="footer-main">
         <img src="/assets/logo-mind-objects.svg" alt="Logo Mind-Objects" draggable="false" style="height: 100px;"/>
-        <p><a href={urls.mindObjectsImprint} target="_blank" >Legal Notice</a></p>
+        <p><a href={urls.mindObjectsImprint} target="_blank">{t.footer.legalNotice}</a></p>
     </div>
     <div slot="footer-bottom">
-        <p>Website designed and developed by <a href={urls.icuMedia} target="_blank">icu-media </a></p>
+        <p>{t.footer.websiteDesignedBy}<a href={urls.icuMedia} target="_blank">icu-media </a></p>
     </div>
 </BaseLayout>

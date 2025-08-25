@@ -2,8 +2,14 @@
 import { urls as configUrls } from "../config";
 interface Props {
   urls: typeof configUrls;
+  clickToViewText: string;
+  sketchFromText: string;
+  viewIn3DText: string;
+  loadMoreText: string;
+  errorLoadingText: string;
 }
-const { urls } = Astro.props;
+
+const { urls, clickToViewText, sketchFromText, viewIn3DText, loadMoreText, errorLoadingText } = Astro.props;
 ---
 <div class="container-Explorer">
     <div class="grid-Explorer" id="grid-Explorer"></div>
@@ -15,6 +21,13 @@ const { urls } = Astro.props;
     let baseUrl = '';
     let thumbnailExtension = '';
     let currentIndex = 0;
+
+    const loadMoreText = "${loadMoreText}";
+    const errorLoadingText = "${errorLoadingText}";
+
+    const clickToViewText = "${clickToViewText}";
+    const sketchFromText = "${sketchFromText}";
+    const viewIn3DText = "${viewIn3DText}";
 
     const windowWidth = window.innerWidth;
     const isMobile = windowWidth < 768;
@@ -82,19 +95,20 @@ const { urls } = Astro.props;
                 formatFile(file);
 
             const col = document.createElement("div");
+            console.log('clickToViewText:', clickToViewText);
             col.className = "card-Explorer";
             col.innerHTML = `
       
           <a href="https://j0nes-l.github.io/moxr-glb-viewer/?file=${filename}" class="card-explorer-link" target="_blank" rel="noopener noreferrer">
-            <p class="card-img-text">click to view in 3D</p>
+            <p class="card-img-text">${clickToViewText}</p>
             <img src="${thumbnailUrl}" class="card-img-top" alt="Thumbnail for ${filename}" draggable="false" style="user-select: none; -webkit-user-drag: none;" loading="lazy" />
           </a>
           <div class="card-body">
               <div class="card-text">
-              <p class="card-title" title="${filename}">3D-Sketch from ${daysAgo}</p>
+              <p class="card-title" title="${filename}">${sketchFromText} ${daysAgo}</p>
               <p class="card-description">${creator}</p>
               <a href="https://j0nes-l.github.io/moxr-glb-viewer/?file=${filename}" class="card-explorer-btn" target="_blank" rel="noopener noreferrer">
-                  <p class="card-btn-text">View in 3D</p>
+                  <p class="card-btn-text">${viewIn3DText}</p>
                 </a>
           </div>
     `;
@@ -115,7 +129,7 @@ const { urls } = Astro.props;
 
         if (!isMobile && currentIndex < allFiles.length) {
             const button = document.createElement('button');
-            button.textContent = 'Load more';
+            button.textContent = loadMoreText;
             button.className = 'btn btn-Primary';
             button.addEventListener('click', loadMoreFiles);
             container.appendChild(button);
@@ -169,7 +183,7 @@ const { urls } = Astro.props;
 
         } catch (err) {
             console.error(err);
-            document.getElementById("grid-Explorer").innerHTML = "<p>Error loading the drawings.</p>";
+            document.getElementById("grid-Explorer").innerHTML = `<p>${errorLoadingText}</p>`;
         }
     }
 
