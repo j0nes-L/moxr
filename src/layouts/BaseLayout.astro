@@ -1,12 +1,17 @@
----
+--- 
+import Head from '../components/Head.astro';
+
+interface Props {
+    title: string;
+    lang: string;
+}
+
+const { title, lang = 'de' } = Astro.props;
 ---
 <!doctype html>
-<html lang="en">
+<html lang={lang} data-theme="light">
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width"/>
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
-    <meta name="generator" content={Astro.generator}/>
+    <Head title={title} />
     <slot name="head"/>
 </head>
 <body>
@@ -16,7 +21,7 @@
     </div>
 </header>
 <main>
-    <slot name="main"/>
+    <slot/>
 </main>
 <footer>
     <div class="footer-main-content">
