@@ -1,0 +1,42 @@
+---
+interface Props {
+    lang: 'de' | 'en';
+    slug?: string;
+}
+
+const { lang, slug } = Astro.props;
+const otherLang = lang === 'de' ? 'en' : 'de';
+const otherLangPath = slug ? `/${slug}` : '';
+const otherLangUrl = `/${otherLang}${otherLangPath}`;
+
+const langNames = {
+    en: 'English',
+    de: 'Deutsch'
+};
+
+const langFlags = {
+    en: '🇬🇧',
+    de: '🇩🇪'
+};
+---
+<a href={otherLangUrl} class="language-switch">
+    {langFlags[otherLang]}
+  <!--  {langNames[otherLang]}-->
+</a>
+
+<style>
+    .language-switch {
+        display: inline-block;
+        padding: 0 0.5rem;
+        border: 1px solid var(--color-Primary);
+        border-radius: 0.5rem;
+        text-decoration: none;
+        color: var(--color-Primary);
+        font-weight: 500;
+        font-size: 1.5rem;
+    }
+    .language-switch:hover {
+        background-color: var(--color-Primary);
+        color: var(--color-Secondary);
+    }
+</style>

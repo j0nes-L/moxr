@@ -1,0 +1,80 @@
+{
+  "common": {
+    "siteTitle": {
+      "de": "Mind-Objects XR",
+      "en": "Mind-Objects XR"
+    }
+  },
+  "indexPage": {
+    "heroMain": {
+      "heading": {
+        "de": "Mind-Objects XR",
+        "en": "Mind-Objects XR"
+      },
+      "subheading": {
+        "de": "Ein Werkzeug zur Visualisierung Ihrer Gedanken.",
+        "en": "A tool for visualizing your thoughts."
+      },
+      "primaryButtonText": {
+        "de": "Beta beitreten",
+        "en": "Join Beta"
+      },
+      "secondaryButtonText": {
+        "de": "3D-Skizzen ansehen",
+        "en": "View 3D-Sketches"
+      }
+    },
+    "aboutTitle": {
+      "de": "Über Mind-Objects XR",
+      "en": "About Mind-Objects XR"
+    },
+    "aboutParagraph1": {
+      "de": "Mind-Objects XR ist ein Werkzeug, um Ideen schnell direkt im 3D-Raum zu skizzieren und so eine frühe Konzeptvisualisierung schnell und mühelos zu ermöglichen.",
+      "en": "Mind-Objects XR is a tool for quickly sketching ideas directly in 3D space, making early concept visualization fast and effortless."
+    },
+    "aboutParagraph2": {
+      "de": "Benutzer können handgezeichnete Objekte mit beiden Händen greifen, bewegen und skalieren, was kreatives Denken und Zusammenarbeit fördert.",
+      "en": "Users can grab, move, and scale hand-drawn objects with both hands, encouraging creative thinking and collaboration."
+    },
+    "aboutParagraph3": {
+      "de": "Die App konzentriert sich auf Einfachheit und Geschwindigkeit und verwandelt Ideen innerhalb von Minuten in immersive Prototypen.",
+      "en": "The app focuses on simplicity and speed, turning ideas into immersive prototypes within minutes."
+    },
+    "explorerTitle": {
+      "de": "3D-Skizzen erkunden",
+      "en": "Explore 3D Sketches"
+    },
+    "explorerPage": {
+      "clickToViewText": {
+        "de": "zum Anzeigen in 3D klicken",
+        "en": "click to view in 3D"
+      },
+      "sketchFromText": {
+        "de": "3D-Skizze vom",
+        "en": "3D-Sketch from"
+      },
+      "viewIn3DText": {
+        "de": "In 3D ansehen",
+        "en": "View in 3D"
+      },
+      "loadMoreText": {
+        "de": "Mehr laden",
+        "en": "Load more"
+      },
+      "errorLoadingText": {
+        "de": "Fehler beim Laden der Zeichnungen.",
+        "en": "Error loading the drawings."
+      }
+    },
+    "footer": {
+      "legalNotice": {
+        "de": "Impressum",
+        "en": "Legal Notice"
+      },
+      "websiteDesignedBy": {
+        "de": "Webseite gestaltet und entwickelt von ",
+        "en": "Website designed and developed by "
+      }
+    }
+  }
+}

@@ -59,6 +59,11 @@ h1, h2, h3, h4, h5, h6, p, a {
     font-family: Inter, sans-serif;
 }
 
+h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
 a, p {
     line-height: 1.6;
 }
@@ -135,11 +140,6 @@ section#about {
     text-align: center;
 }
 
-
-#about h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-}
 
 #about p {
     max-width: 60ch;
