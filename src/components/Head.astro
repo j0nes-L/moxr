@@ -4,19 +4,23 @@ interface Props {
     description?: string;
     url?: string;
     image?: string;
+    lang?: 'de' | 'en';
+
 }
 
 const {
     title = "Mind-Objects XR",
     description = "A tool for visualizing your thoughts.",
     url = "https://j0nesyes.github.io/moxr",
-    image = "/assets/mind-objects-logo.jpg"
+    image = "/assets/mind-objects-logo.jpg",
+    lang = 'de'
 } = Astro.props;
 ---
 
 <title>{title}</title>
 <!-- Meta Tags for SEO -->
 <meta charset="utf-8"/>
+<meta name="language" content={lang}/>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="generator" content={Astro.generator}/>
 <meta name="robots" content="index, follow"/>
@@ -24,7 +28,6 @@ const {
 <meta name="revisit-after" content="2 days"/>
 <meta name="audience" content="all"/>
 <meta http-equiv="content-language" content="de"/>
-<meta name="language" content="de"/>
 <meta name="author" content="Mind-Objects XR"/>
 <meta name="copyright" content="Mind-Objects XR"/>
 <meta name="page-type" content="Personal Website"/>

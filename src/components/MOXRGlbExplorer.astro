@@ -16,6 +16,10 @@ const { urls } = Astro.props;
     let thumbnailExtension = '';
     let currentIndex = 0;
 
+    // Detect language from <meta name="language" content="...">
+    const metaLang = document.querySelector('meta[name="language"]')?.content || 'en';
+    let currentLang = metaLang.toLowerCase();
+
     const windowWidth = window.innerWidth;
     const isMobile = windowWidth < 768;
 
@@ -36,6 +40,35 @@ const { urls } = Astro.props;
         loadMoreCount = 5;
     }
 
+    const translations = {
+        en: {
+            clickToView: "click to view in 3D",
+            sketchFrom: "3D-Sketch from",
+            viewIn3D: "View in 3D",
+            loadMore: "Load more",
+            today: "today",
+            yesterday: "yesterday",
+            daysAgo: d => `${d} days ago`,
+            weeksAgo: w => `${w} weeks ago`,
+            monthsAgo: m => `${m} months ago`,
+            yearsAgo: y => `${y} years ago`,
+            error: "Error loading the drawings."
+        },
+        de: {
+            clickToView: "Klicken zum 3D-Ansicht",
+            sketchFrom: "3D-Skizze von",
+            viewIn3D: "In 3D ansehen",
+            loadMore: "Mehr laden",
+            today: "heute",
+            yesterday: "gestern",
+            daysAgo: d => `vor ${d} Tagen`,
+            weeksAgo: w => `vor ${w} Wochen`,
+            monthsAgo: m => `vor ${m} Monaten`,
+            yearsAgo: y => `vor ${y} Jahren`,
+            error: "Fehler beim Laden der Zeichnungen."
+        }
+    };
+
     function formatFile(file) {
         const filename = file.filename;
         const parts = filename.split('_');
@@ -50,7 +83,6 @@ const { urls } = Astro.props;
         const minute = timePart.substring(2, 4);
 
         const creator = creatorPart.replace('.glb', ' ').replaceAll('-', ' ');
-        const formattedDateTime = datePart && timePart ? `${day}.${month}.${year} ${hour}:${minute}` : 'N/A';
 
         let daysAgo = '';
         if (datePart) {
@@ -62,39 +94,40 @@ const { urls } = Astro.props;
             const diffTime = today.getTime() - fileDate.getTime();
             const diffDays = Math.round(diffTime / (1000 * 60 * 60 * 24));
 
-            if (diffDays === 0) daysAgo = 'today';
-            else if (diffDays === 1) daysAgo = 'yesterday';
-            else if (diffDays < 7) daysAgo = `${diffDays} days ago`;
-            else if (diffDays < 30) daysAgo = `${Math.floor(diffDays / 7)} weeks ago`;
-            else if (diffDays < 365) daysAgo = `${Math.floor(diffDays / 30)} months ago`;
-            else if (diffDays >= 365) daysAgo = `${Math.floor(diffDays / 365)} years ago`;
+            const t = translations[currentLang] || translations.en;
+            if (diffDays === 0) daysAgo = t.today;
+            else if (diffDays === 1) daysAgo = t.yesterday;
+            else if (diffDays < 7) daysAgo = t.daysAgo(diffDays);
+            else if (diffDays < 30) daysAgo = t.weeksAgo(Math.floor(diffDays / 7));
+            else if (diffDays < 365) daysAgo = t.monthsAgo(Math.floor(diffDays / 30));
+            else if (diffDays >= 365) daysAgo = t.yearsAgo(Math.floor(diffDays / 365));
         }
 
         const thumbnailUrl = `${baseUrl}${filename.replace('.glb', thumbnailExtension)}`;
         const fileUrl = `${baseUrl}${filename}`;
-        return {filename, creator, formattedDateTime, daysAgo, thumbnailUrl, fileUrl};
+        return {filename, creator, daysAgo, thumbnailUrl, fileUrl};
     }
 
     function appendFiles(filesToAppend) {
         const grid = document.getElementById("grid-Explorer");
         filesToAppend.forEach(file => {
-            const {filename, creator, formattedDateTime, daysAgo, thumbnailUrl, fileUrl} =
+            const {filename, creator, daysAgo, thumbnailUrl, fileUrl} =
                 formatFile(file);
 
+            const t = translations[currentLang] || translations.en;
             const col = document.createElement("div");
             col.className = "card-Explorer";
             col.innerHTML = `
-      
           <a href="https://j0nes-l.github.io/moxr-glb-viewer/?file=${filename}" class="card-explorer-link" target="_blank" rel="noopener noreferrer">
-            <p class="card-img-text">click to view in 3D</p>
+            <p class="card-img-text">${t.clickToView}</p>
             <img src="${thumbnailUrl}" class="card-img-top" alt="Thumbnail for ${filename}" draggable="false" style="user-select: none; -webkit-user-drag: none;" loading="lazy" />
           </a>
           <div class="card-body">
               <div class="card-text">
-              <p class="card-title" title="${filename}">3D-Sketch from ${daysAgo}</p>
+              <p class="card-title" title="${filename}">${t.sketchFrom} ${daysAgo}</p>
               <p class="card-description">${creator}</p>
               <a href="https://j0nes-l.github.io/moxr-glb-viewer/?file=${filename}" class="card-explorer-btn" target="_blank" rel="noopener noreferrer">
-                  <p class="card-btn-text">View in 3D</p>
+                  <p class="card-btn-text">${t.viewIn3D}</p>
                 </a>
           </div>
     `;
@@ -111,11 +144,11 @@ const { urls } = Astro.props;
 
     function updateLoadMoreButton() {
         const container = document.getElementById('load-more-container');
-        container.innerHTML = ''; // Clear existing button
+        container.innerHTML = '';
 
         if (!isMobile && currentIndex < allFiles.length) {
             const button = document.createElement('button');
-            button.textContent = 'Load more';
+            button.textContent = (translations[currentLang] || translations.en).loadMore;
             button.className = 'btn btn-Primary';
             button.addEventListener('click', loadMoreFiles);
             container.appendChild(button);
@@ -131,7 +164,6 @@ const { urls } = Astro.props;
             baseUrl = data.baseUrl;
             thumbnailExtension = data.thumbnailExtension;
 
-            // Sort files so newest are displayed first
             data.files.sort((a, b) => {
                 const partsA = a.filename.split('_');
                 const partsB = b.filename.split('_');
@@ -169,7 +201,7 @@ const { urls } = Astro.props;
 
         } catch (err) {
             console.error(err);
-            document.getElementById("grid-Explorer").innerHTML = "<p>Error loading the drawings.</p>";
+            document.getElementById("grid-Explorer").innerHTML = `<p>${(translations[currentLang] || translations.en).error}</p>`;
         }
     }
 

@@ -19,12 +19,11 @@ const {lang} = Astro.params;
 const t = i18nUtils.getTranslations(lang);
 const pageTitle = t.common.siteTitle;
 ---
-
+<Head slot="head" lang={lang}/>
 <BaseLayout title={pageTitle} lang={lang}>
     <div style="position: absolute; top: 1rem; right: 1rem; z-index: 10;">
         <LanguageSwitch lang={lang} slug=""/>
     </div>
-    <Head slot="head"/>
     <HeroMain slot="hero"
               heading={t.indexPage.heroMain.heading}
               subheading={t.indexPage.heroMain.subheading}
