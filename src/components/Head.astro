@@ -2,16 +2,15 @@
 interface Props {
     title?: string;
     description?: string;
-    url?: string;
     image?: string;
     lang?: 'de' | 'en';
 
 }
 
+import {urls} from "../config.ts";
 const {
     title = "Mind-Objects XR",
     description = "A tool for visualizing your thoughts.",
-    url = "https://j0nesyes.github.io/moxr",
     image = "/assets/mind-objects-logo.jpg",
     lang = 'de'
 } = Astro.props;
@@ -21,13 +20,13 @@ const {
 <!-- Meta Tags for SEO -->
 <meta charset="utf-8"/>
 <meta name="language" content={lang}/>
+<meta http-equiv="content-language" content={lang}/>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="generator" content={Astro.generator}/>
 <meta name="robots" content="index, follow"/>
 <meta http-equiv="Pragma" content="cache"/>
 <meta name="revisit-after" content="2 days"/>
 <meta name="audience" content="all"/>
-<meta http-equiv="content-language" content="de"/>
 <meta name="author" content="Mind-Objects XR"/>
 <meta name="copyright" content="Mind-Objects XR"/>
 <meta name="page-type" content="Personal Website"/>
@@ -50,7 +49,7 @@ const {
 <meta name="twitter:image" content={image}/>
 
 <!-- Canonical Link -->
-<link rel="canonical" href={url}/>
+<link rel="canonical" href={urls.moxr}/>
 
 <!-- Favicon -->
 <link rel="icon" type="image/svg+xml" href="https://j0nesyes.github.io/moxr/favicon.svg"/>
@@ -62,7 +61,7 @@ const {
         "@context": "https://schema.org",
         "@type": "Organization",
         "name": "Mind-Objects XR",
-        "url": "https://j0nesyes.github.io/moxr",
+        "url": {urls.moxr},
         "logo": "https://j0nesyes.github.io/moxr/assets/mind-objects-logo.jpg",
     }
 </script>

@@ -1,4 +1,4 @@
---- 
+---
 import Head from '../components/Head.astro';
 
 interface Props {
@@ -6,20 +6,18 @@ interface Props {
     lang: string;
 }
 
-const { title, lang = 'de' } = Astro.props;
+const {title, lang = 'de'} = Astro.props;
 ---
 <!doctype html>
 <html lang={lang} data-theme="light">
 <head>
-    <Head title={title} />
+    <Head title={title}/>
     <slot name="head"/>
 </head>
 <body>
-<header>
-    <div class="hero-wrapper">
-        <slot name="hero"/>
-    </div>
-</header>
+<div class="hero-wrapper">
+    <Head slot="head" lang={lang}/>
+</div>
 <main>
     <slot/>
 </main>

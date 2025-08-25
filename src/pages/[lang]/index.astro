@@ -1,7 +1,6 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro"
 import HeroMain from "../../components/HeroMain.astro"
-import Head from "../../components/Head.astro"
 import MOXRGlbExplorer from "../../components/MOXRGlbExplorer.astro"
 import LanguageSwitch from "../../components/languageSwitch.astro";
 import '../../styles/main.css';
@@ -19,7 +18,6 @@ const {lang} = Astro.params;
 const t = i18nUtils.getTranslations(lang);
 const pageTitle = t.common.siteTitle;
 ---
-<Head slot="head" lang={lang}/>
 <BaseLayout title={pageTitle} lang={lang}>
     <div style="position: absolute; top: 1rem; right: 1rem; z-index: 10;">
         <LanguageSwitch lang={lang} slug=""/>
