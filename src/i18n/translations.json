@@ -1,31 +1,11 @@
 {
   "common": {
     "siteTitle": {
-      "de": "Mein Astro Projekt",
-      "en": "My Astro Project"
+      "de": "Mind-Objects XR",
+      "en": "Mind-Objects XR"
     }
   },
   "indexPage": {
-    "welcome": {
-      "de": "Willkommen auf meiner Webseite!",
-      "en": "Welcome to my website!"
-    },
-    "aboutTitle": {
-      "de": "Über Mind-Objects XR",
-      "en": "About Mind-Objects XR"
-    },
-    "aboutParagraph1": {
-      "de": "Mind-Objects XR ist ein Werkzeug, um Ideen schnell direkt im 3D-Raum zu skizzieren und so eine frühe Konzeptvisualisierung schnell und mühelos zu ermöglichen.",
-      "en": "Mind-Objects XR is a tool for quickly sketching ideas directly in 3D space, making early concept visualization fast and effortless."
-    },
-    "aboutParagraph2": {
-      "de": "Benutzer können handgezeichnete Objekte mit beiden Händen greifen, bewegen und skalieren, was kreatives Denken und Zusammenarbeit fördert.",
-      "en": "Users can grab, move, and scale hand-drawn objects with both hands, encouraging creative thinking and collaboration."
-    },
-    "aboutParagraph3": {
-      "de": "Die App konzentriert sich auf Einfachheit und Geschwindigkeit und verwandelt Ideen innerhalb von Minuten in immersive Prototypen.",
-      "en": "The app focuses on simplicity and speed, turning ideas into immersive prototypes within minutes."
-    },
     "heroMain": {
       "heading": {
         "de": "Mind-Objects XR",
@@ -43,6 +23,22 @@
         "de": "3D-Skizzen ansehen",
         "en": "View 3D-Sketches"
       }
+    },
+    "aboutTitle": {
+      "de": "Über Mind-Objects XR",
+      "en": "About Mind-Objects XR"
+    },
+    "aboutParagraph1": {
+      "de": "Mind-Objects XR ist ein Werkzeug, um Ideen schnell direkt im 3D-Raum zu skizzieren und so eine frühe Konzeptvisualisierung schnell und mühelos zu ermöglichen.",
+      "en": "Mind-Objects XR is a tool for quickly sketching ideas directly in 3D space, making early concept visualization fast and effortless."
+    },
+    "aboutParagraph2": {
+      "de": "Benutzer können handgezeichnete Objekte mit beiden Händen greifen, bewegen und skalieren, was kreatives Denken und Zusammenarbeit fördert.",
+      "en": "Users can grab, move, and scale hand-drawn objects with both hands, encouraging creative thinking and collaboration."
+    },
+    "aboutParagraph3": {
+      "de": "Die App konzentriert sich auf Einfachheit und Geschwindigkeit und verwandelt Ideen innerhalb von Minuten in immersive Prototypen.",
+      "en": "The app focuses on simplicity and speed, turning ideas into immersive prototypes within minutes."
     },
     "explorerPage": {
       "clickToViewText": {
@@ -65,16 +61,16 @@
         "de": "Fehler beim Laden der Zeichnungen.",
         "en": "Error loading the drawings."
       }
-    }
-  },
-  "footer": {
-    "legalNotice": {
-      "de": "Impressum",
-      "en": "Legal Notice"
     },
-    "websiteDesignedBy": {
-      "de": "Webseite gestaltet und entwickelt von ",
-      "en": "Website designed and developed by "
+    "footer": {
+      "legalNotice": {
+        "de": "Impressum",
+        "en": "Legal Notice"
+      },
+      "websiteDesignedBy": {
+        "de": "Webseite gestaltet und entwickelt von ",
+        "en": "Website designed and developed by "
+      }
     }
   }
 }

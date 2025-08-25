@@ -39,18 +39,14 @@ const pageTitle = t.common.siteTitle;
         <p>{t.indexPage.aboutParagraph3}</p>
     </section>
     <section id="explorer">
-        <MOXRGlbExplorer clickToViewText={t.indexPage.explorerPage.clickToViewText}
-                         sketchFromText={t.indexPage.explorerPage.sketchFromText}
-                         viewIn3DText={t.indexPage.explorerPage.viewIn3DText}
-                         loadMoreText={t.indexPage.explorerPage.loadMoreText}
-                         errorLoadingText={t.indexPage.explorerPage.errorLoadingText}/>
+        <MOXRGlbExplorer/>
     </section>
 
     <div slot="footer-main">
         <img src="/assets/logo-mind-objects.svg" alt="Logo Mind-Objects" draggable="false" style="height: 100px;"/>
-        <p><a href={urls.mindObjectsImprint} target="_blank">{t.footer.legalNotice}</a></p>
+        <p><a href={urls.mindObjectsImprint} target="_blank">{t.indexPage.footer.legalNotice}</a></p>
     </div>
     <div slot="footer-bottom">
-        <p>{t.footer.websiteDesignedBy}<a href={urls.icuMedia} target="_blank">icu-media </a></p>
+        <p>{t.indexPage.footer.websiteDesignedBy}<a href={urls.icuMedia} target="_blank">icu-media </a></p>
     </div>
 </BaseLayout>
