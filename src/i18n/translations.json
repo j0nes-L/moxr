@@ -40,6 +40,10 @@
       "de": "Die App konzentriert sich auf Einfachheit und Geschwindigkeit und verwandelt Ideen innerhalb von Minuten in immersive Prototypen.",
       "en": "The app focuses on simplicity and speed, turning ideas into immersive prototypes within minutes."
     },
+    "explorerTitle": {
+      "de": "3D-Skizzen erkunden",
+      "en": "Explore 3D Sketches"
+    },
     "explorerPage": {
       "clickToViewText": {
         "de": "zum Anzeigen in 3D klicken",

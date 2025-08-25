@@ -31,14 +31,15 @@ const pageTitle = t.common.siteTitle;
               primaryButtonText={t.indexPage.heroMain.primaryButtonText}
               primaryButtonHref={urls.metaBeta}
               secondaryButtonText={t.indexPage.heroMain.secondaryButtonText}
-              secondaryButtonHref={urls.moxr + "#explorer"}/>
+              secondaryButtonHref={urls.moxr +"/"+ lang + "/#explorer"}/>
     <section id="about">
-        <h2>{t.indexPage.aboutTitle}</h2>
+        <h3>{t.indexPage.aboutTitle}</h3>
         <p>{t.indexPage.aboutParagraph1}</p>
         <p>{t.indexPage.aboutParagraph2}</p>
         <p>{t.indexPage.aboutParagraph3}</p>
     </section>
     <section id="explorer">
+        <h3>{t.indexPage.explorerTitle}</h3>
         <MOXRGlbExplorer/>
     </section>
 
