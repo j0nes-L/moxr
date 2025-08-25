@@ -18,7 +18,7 @@ const {lang} = Astro.params;
 const t = i18nUtils.getTranslations(lang);
 const pageTitle = t.common.siteTitle;
 ---
-<BaseLayout title={pageTitle} lang={lang}>
+<BaseLayout title={pageTitle}>
     <div style="position: absolute; top: 1rem; right: 1rem; z-index: 10;">
         <LanguageSwitch lang={lang} slug=""/>
     </div>
