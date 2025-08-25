@@ -14,15 +14,18 @@ import {urls} from "../config";
         <h2>A tool for visualizing your thoughts.</h2>
     </div>
     <div id="hero-Button-Wrapper">
-        <a id="hero-Button" href={urls.moxr + "#explorer"}>
-            <span id="hero-Button-Text">View Drawings</span>
+        <a class="btn btn-Primary" id="hero-Button" href={urls.metaBeta} target="_blank">
+            <span id="hero-Button-Text">Join Beta</span>
+        </a>
+        <a class="btn btn-Secondary" id="hero-Button" href={urls.moxr + "#explorer"}>
+            <span id="hero-Button-Text">View 3D-Sketches</span>
         </a>
     </div>
     <div class="down-arrow">
         <ArrowDownAnim/>
     </div>
 </div>
-<div class="temp-spacer" style="height: 1rem; width: 100vw; background-color: black;"></div>
+<div class="hero-Spacer"></div>
 
 <script>
     const canvas = document.getElementById('hero-Canvas');
