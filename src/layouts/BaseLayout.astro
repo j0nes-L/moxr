@@ -15,8 +15,10 @@ const {title, lang = 'de'} = Astro.props;
     <slot name="head"/>
 </head>
 <body>
-<div class="hero-wrapper">
-    <Head slot="head" lang={lang}/>
+<div>
+    <div class="hero-wrapper">
+        <slot name="hero"/>
+    </div>
 </div>
 <main>
     <slot/>
