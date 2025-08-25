@@ -1,2 +1,6 @@
-// Redirect to fron / to /de/ homepage
-<meta http-equiv="refresh" content="0;url=moxr/de/" />
+<script>
+    const path = window.location.pathname.toLowerCase();
+    if (!path.startsWith('/moxr/de/') && !path.startsWith('/moxr/en/')) {
+        window.location.href = '/moxr/de/';
+    }
+</script>
