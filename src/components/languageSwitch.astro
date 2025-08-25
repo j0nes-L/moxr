@@ -4,10 +4,11 @@ interface Props {
     slug?: string;
 }
 
-const { lang, slug } = Astro.props;
+const {lang, slug} = Astro.props;
 const otherLang = lang === 'de' ? 'en' : 'de';
 const otherLangPath = slug ? `/${slug}` : '';
-const otherLangUrl = `/${otherLang}${otherLangPath}`;
+const prefix = import.meta.env.PROD ? '/moxr' : '';
+const otherLangUrl = `${prefix}/${otherLang}${otherLangPath}`;
 
 const langNames = {
     en: 'English',
@@ -21,7 +22,7 @@ const langFlags = {
 ---
 <a href={otherLangUrl} class="language-switch">
     {langFlags[otherLang]}
-  <!--  {langNames[otherLang]}-->
+    <!--  {langNames[otherLang]}-->
 </a>
 
 <style>
@@ -35,6 +36,7 @@ const langFlags = {
         font-weight: 500;
         font-size: 1.5rem;
     }
+
     .language-switch:hover {
         background-color: var(--color-Primary);
         color: var(--color-Secondary);
