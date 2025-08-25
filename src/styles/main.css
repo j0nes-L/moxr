@@ -41,7 +41,7 @@ body {
 :root {
     --background-color: #fff;
     --text-color: #0e0e0e;
-    --color-a: #d60000;
+    --color-accent: #d60000;
     --color-grey: #666;
 }
 
@@ -69,7 +69,7 @@ h2 {
 }
 
 a {
-    color: var(--color-a);
+    color: var(--color-accent);
     text-decoration: underline;
     text-decoration-style: dashed;
     text-underline-offset: 2px;
@@ -122,7 +122,7 @@ section#about {
 
 /* hero */
 
-#canvas {
+#hero-Canvas {
     position: absolute;
     top: 0;
     left: 0;
@@ -132,7 +132,7 @@ section#about {
     background-size: 1.5rem 1.5rem;
 }
 
-#hero-logo-wrapper {
+#hero-Logo-Wrapper {
     position: absolute;
     top: 1%;
     left: 1%;
@@ -140,7 +140,7 @@ section#about {
     transform: translateX(-50%), translateY(-50%);
 }
 
-#hero-logo {
+#hero-Logo {
     width: 100px;
     height: auto;
     margin-bottom: 1rem;
@@ -148,7 +148,7 @@ section#about {
     margin: 1rem 0 0 1rem;
 }
 
-#button-wrapper {
+#hero-Button-Wrapper {
     position: absolute;
     top: 75%;
     left: 50%;
@@ -158,7 +158,7 @@ section#about {
     transition: opacity 0.3s ease;
 }
 
-#hero-button {
+#hero-Button {
     padding: 1rem;
     background-color: rgba(0, 0, 0, 0.85);
     color: #fff;
@@ -168,14 +168,14 @@ section#about {
     text-decoration: none;
 }
 
-#button-text {
+#hero-Button-Text {
     font-family: Inter, sans-serif;
     font-weight: 400;
     color: #fff;
 }
 
 
-.text-container {
+.hero-Text-Container {
     position: absolute;
     top: 45%;
     left: 0;
@@ -194,12 +194,6 @@ section#about {
     opacity: 0.8;
     transition: opacity 0.2s ease;
 }
-
-.down-arrow {
-    z-index: 1;
-    pointer-events: none;
-}
-
 
 /* explorer */
 .container-Explorer {
