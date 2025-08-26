@@ -44,6 +44,44 @@
       "de": "3D-Skizzen erkunden",
       "en": "Explore 3D Sketches"
     },
+    "features": {
+      "featuresTitle": {
+        "de": "Funktionen",
+        "en": "Features"
+      },
+      "feature1Title": {
+        "de": "Intuitive 3D-Skizzierung",
+        "en": "Intuitive 3D Sketching"
+      },
+      "feature1Description": {
+        "de": "Verwandeln Sie den 3D-Raum in Ihre Leinwand und zeichnen Sie Ideen mit natürlichen Handbewegungen, um ohne technische Ablenkung im kreativen Fluss zu bleiben.",
+        "en": "Turn 3D space into your canvas and sketch ideas with natural hand movements, keeping you in a state of creative flow without technical distractions."
+      },
+      "feature2Title": {
+        "de": "Einfache Bedienung",
+        "en": "Easy to Use"
+      },
+      "feature2Description": {
+        "de": "Dank des minimalistischen Designs kann das gesamte Team – auch ohne Vorkenntnisse – sofort und intuitiv loslegen.",
+        "en": "Thanks to the minimalist design, the entire team can get started immediately and intuitively, even without any prior experience."
+      },
+      "feature3Title": {
+        "de": "Schnelle Prototypenerstellung",
+        "en": "Rapid Prototyping"
+      },
+      "feature3Description": {
+        "de": "Beschleunigen Sie Ihren Workflow von Wochen auf Minuten und erstellen Sie Prototypen, die Sie sofort in 3D erleben können.",
+        "en": "Accelerate your workflow from weeks to minutes and create tangible prototypes that you can immediately experience in 3D."
+      },
+      "feature4Title": {
+        "de": "Kollaboratives Arbeiten",
+        "en": "Collaborative Work"
+      },
+      "feature4Description": {
+        "de": "Arbeiten Sie als Team in einem gemeinsamen virtuellen Raum, in dem alle Teilnehmer:innen in der Idee stehen, um Missverständnisse zu vermeiden.",
+        "en": "Work as a team in a shared virtual space where all participants stand inside the idea, eliminating misunderstandings and enhancing creativity."
+      }
+    },
     "explorerPage": {
       "clickToViewText": {
         "de": "zum Anzeigen in 3D klicken",
