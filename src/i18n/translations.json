@@ -104,6 +104,44 @@
         "en": "Error loading the drawings."
       }
     },
+    "faq": {
+      "faqTitle": {
+        "de": "Häufig gestellte Fragen",
+        "en": "Frequently Asked Questions"
+      },
+      "faq1Question": {
+        "de": "Welche Hardware benötige ich?",
+        "en": "What hardware do I need?"
+      },
+      "faq1Answer": {
+        "de": "Die Beta von Mind-Objects XR ist aktuell für die Meta Quest 2, 3 und Pro verfügbar. Wir planen, zukünftig weitere Plattformen zu unterstützen.",
+        "en": "The Mind-Objects XR beta is currently available for the Meta Quest 2, 3, and Pro. We are planning to support more platforms in the future."
+      },
+      "faq2Question": {
+        "de": "Kann ich meine Skizzen exportieren?",
+        "en": "Can I export my sketches?"
+      },
+      "faq2Answer": {
+        "de": "Ja, der Export Ihrer Kreationen hat für die Vollversion höchste Priorität. Wir arbeiten an gängigen 3D-Formaten wie GLB und OBJ für einen nahtlosen Workflow.",
+        "en": "Yes, exporting your creations is a top priority for the full version. We are working on common 3D formats like GLB and OBJ for a seamless workflow."
+      },
+      "faq3Question": {
+        "de": "Was kostet Mind-Objects XR?",
+        "en": "How much does Mind-Objects XR cost?"
+      },
+      "faq3Answer": {
+        "de": "Die Teilnahme an der Beta-Phase ist komplett kostenlos. Das Preismodell für die kommerzielle Veröffentlichung werden wir zu einem späteren Zeitpunkt bekannt geben.",
+        "en": "Participation in the beta phase is completely free. We will announce the pricing model for the commercial release at a later date."
+      },
+      "faq4Question": {
+        "de": "Wie funktioniert die Kollaboration?",
+        "en": "How does collaboration work?"
+      },
+      "faq4Answer": {
+        "de": "Sie können einen privaten virtuellen Raum erstellen und Ihr Team über einen Code einladen. Im gemeinsamen Raum können alle in Echtzeit Objekte erstellen, bearbeiten und diskutieren.",
+        "en": "You can create a private virtual room and invite your team using a code. In the shared space, everyone can create, modify, and discuss objects in real-time."
+      }
+    },
     "footer": {
       "legalNotice": {
         "de": "Impressum",
