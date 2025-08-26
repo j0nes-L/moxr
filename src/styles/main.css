@@ -445,8 +445,12 @@ section {
     border-radius: 0.5rem;
 }
 
-.feature-card h4, .feature-card p, .feature-card-reverse h4, .feature-card-reverse p {
+.feature-card h4, .feature-card p{
     padding-left: 1rem;
+}
+
+.feature-card-reverse h4, .feature-card-reverse p {
+    padding-left: 0.5rem;
 }
 
 .feature-image-wrapper {
