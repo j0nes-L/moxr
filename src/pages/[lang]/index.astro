@@ -102,6 +102,44 @@ const pageTitle = t.common.siteTitle;
         <MOXRGlbExplorer/>
     </section>
 
+    <section id="faq-section">
+        <h3>{t.indexPage.faq.faqTitle}</h3>
+        <div class="faq-container">
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="true">
+                    {t.indexPage.faq.faq1Question}
+                </button>
+                <div class="faq-answer">
+                    <p>{t.indexPage.faq.faq1Answer}</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    {t.indexPage.faq.faq2Question}
+                </button>
+                <div class="faq-answer">
+                    <p>{t.indexPage.faq.faq2Answer}</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    {t.indexPage.faq.faq3Question}
+                </button>
+                <div class="faq-answer">
+                    <p>{t.indexPage.faq.faq3Answer}</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    {t.indexPage.faq.faq4Question}
+                </button>
+                <div class="faq-answer">
+                    <p>{t.indexPage.faq.faq4Answer}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <div slot="footer-main">
         <img src="../assets/favicon.svg" " alt="Logo Mind-Objects" draggable="false" style="height: 100px;"/>
         <p><a href={urls.mindObjectsImprint} target="_blank">{t.indexPage.footer.legalNotice}</a></p>
@@ -144,4 +182,27 @@ const pageTitle = t.common.siteTitle;
 
     // Then cycle
     setInterval(playNext, intervalTime);
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const faqQuestions = document.querySelectorAll('.faq-question');
+
+        faqQuestions.forEach((question, index) => {
+            const answer = question.nextElementSibling; // The div with the answer
+
+            // Open the first one by default
+            if (index === 0) {
+                question.setAttribute('aria-expanded', 'true');
+                answer.style.display = 'block';
+            } else {
+                question.setAttribute('aria-expanded', 'false');
+                answer.style.display = 'none';
+            }
+
+            question.addEventListener('click', () => {
+                const isExpanded = question.getAttribute('aria-expanded') === 'true';
+                question.setAttribute('aria-expanded', String(!isExpanded));
+                answer.style.display = isExpanded ? 'none' : 'block';
+            });
+        });
+    });
 </script>
