@@ -97,6 +97,12 @@ a {
     white-space: nowrap;
 }
 
+@media (max-width: 768px) {
+    .hide-on-mobile {
+        display: none;
+    }
+}
+
 .btn {
     padding: 0.75rem 1rem;
     border-radius: 0.5rem;
@@ -232,8 +238,8 @@ section {
 /* explorer */
 .container-Explorer {
     max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
+    margin: 0 0;
+    padding: 0.5rem;
 }
 
 .grid-Explorer {
@@ -434,7 +440,7 @@ section {
     border-radius: 0.5rem;
 }
 
-.feature-card h4, .feature-card p, .feature-card-reverse h4, .feature-card-reverse p{
+.feature-card h4, .feature-card p, .feature-card-reverse h4, .feature-card-reverse p {
     padding-left: 1rem;
 }
 
@@ -466,6 +472,7 @@ section {
     width: 100%;
     transition: width 3s linear;
 }
+
 
 @media (max-width: 768px) {
     #hero-Button-Wrapper {
