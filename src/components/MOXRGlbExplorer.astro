@@ -1,13 +1,13 @@
 ---
-import { urls as configUrls } from "../config";
+import {urls as configUrls} from "../config";
 interface Props {
     urls: typeof configUrls;
 }
-const { urls } = Astro.props;
+const {urls} = Astro.props;
 ---
 <div class="container-Explorer">
     <div class="grid-Explorer" id="grid-Explorer"></div>
-    <div id="load-more-container" style="text-align: center; padding: 20px;"></div>
+    <div id="load-more-container"></div>
 </div>
 
 <script>
@@ -171,23 +171,23 @@ const { urls } = Astro.props;
                 const datePartA = partsA[1];
                 const timePartA = partsA[2];
                 const dateA = new Date(
-                    parseInt(datePartA.substring(0,4)),
-                    parseInt(datePartA.substring(4,6)) - 1,
-                    parseInt(datePartA.substring(6,8)),
-                    parseInt(timePartA.substring(0,2)),
-                    parseInt(timePartA.substring(2,4)),
-                    parseInt(timePartA.substring(4,6))
+                    parseInt(datePartA.substring(0, 4)),
+                    parseInt(datePartA.substring(4, 6)) - 1,
+                    parseInt(datePartA.substring(6, 8)),
+                    parseInt(timePartA.substring(0, 2)),
+                    parseInt(timePartA.substring(2, 4)),
+                    parseInt(timePartA.substring(4, 6))
                 );
 
                 const datePartB = partsB[1];
                 const timePartB = partsB[2];
                 const dateB = new Date(
-                    parseInt(datePartB.substring(0,4)),
-                    parseInt(datePartB.substring(4,6)) - 1,
-                    parseInt(datePartB.substring(6,8)),
-                    parseInt(timePartB.substring(0,2)),
-                    parseInt(timePartB.substring(2,4)),
-                    parseInt(timePartB.substring(4,6))
+                    parseInt(datePartB.substring(0, 4)),
+                    parseInt(datePartB.substring(4, 6)) - 1,
+                    parseInt(datePartB.substring(6, 8)),
+                    parseInt(timePartB.substring(0, 2)),
+                    parseInt(timePartB.substring(2, 4)),
+                    parseInt(timePartB.substring(4, 6))
                 );
 
                 return dateB - dateA; // newest first

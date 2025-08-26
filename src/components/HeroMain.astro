@@ -11,7 +11,14 @@ interface Props {
     secondaryButtonHref: string;
 }
 
-const { heading, subheading, primaryButtonText, primaryButtonHref, secondaryButtonText, secondaryButtonHref } = Astro.props;
+const {
+    heading,
+    subheading,
+    primaryButtonText,
+    primaryButtonHref,
+    secondaryButtonText,
+    secondaryButtonHref
+} = Astro.props;
 ---
 <div style="position: relative; width: 100%; height: 100vh; overflow: hidden;">
     <canvas id="hero-Canvas"></canvas>
@@ -32,7 +39,7 @@ const { heading, subheading, primaryButtonText, primaryButtonHref, secondaryButt
             <span id="hero-Button-Text">{secondaryButtonText}</span>
         </a>
     </div>
-    <div class="down-arrow">
+    <div class="down-arrow hide-on-mobile">
         <ArrowDownAnim/>
     </div>
 </div>
