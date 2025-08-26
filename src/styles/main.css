@@ -238,8 +238,13 @@ section {
 /* explorer */
 .container-Explorer {
     max-width: 1200px;
-    margin: 0 0;
-    padding: 0.5rem;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+#load-more-container {
+    text-align: center;
+    padding: 1rem;
 }
 
 .grid-Explorer {
