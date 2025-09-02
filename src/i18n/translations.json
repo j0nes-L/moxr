@@ -33,8 +33,8 @@
       "en": "Mind-Objects XR is a tool for quickly sketching ideas directly in 3D space, making early concept visualization fast and effortless."
     },
     "aboutParagraph2": {
-      "de": "Benutzer können handgezeichnete Objekte mit beiden Händen greifen, bewegen und skalieren, was kreatives Denken und Zusammenarbeit fördert.",
-      "en": "Users can grab, move, and scale hand-drawn objects with both hands, encouraging creative thinking and collaboration."
+      "de": "Benutzer können handgezeichnete Objekte mit beiden Händen greifen, bewegen und skalieren, was kreatives Denken und Assoziationsfindung fördert.",
+      "en": "Users can grab, move, and scale hand-drawn objects with both hands, encouraging creative thinking and association finding."
     },
     "aboutParagraph3": {
       "de": "Die App konzentriert sich auf Einfachheit und Geschwindigkeit und verwandelt Ideen innerhalb von Minuten in immersive Prototypen.",
@@ -54,16 +54,16 @@
         "en": "Intuitive 3D Sketching"
       },
       "feature1Description": {
-        "de": "Verwandeln Sie den 3D-Raum in Ihre Leinwand und zeichnen Sie Ideen mit natürlichen Handbewegungen, um ohne technische Ablenkung im kreativen Fluss zu bleiben.",
-        "en": "Turn 3D space into your canvas and sketch ideas with natural hand movements, keeping you in a state of creative flow without technical distractions."
+        "de": "Verwandeln Sie den 3D-Raum in Ihre Leinwand und zeichnen Sie Ideen mit natürlichen Handbewegungen, um ohne viel Ablenkung im kreativen Fluss zu bleiben.",
+        "en": "Turn 3D space into your canvas and sketch ideas with natural hand movements, keeping you in a state of creative flow without a lot of distractions."
       },
       "feature2Title": {
         "de": "Einfache Bedienung",
         "en": "Easy to Use"
       },
       "feature2Description": {
-        "de": "Dank des minimalistischen Designs kann das gesamte Team – auch ohne Vorkenntnisse – sofort und intuitiv loslegen.",
-        "en": "Thanks to the minimalist design, the entire team can get started immediately and intuitively, even without any prior experience."
+        "de": "Dank des minimalistischen Designs können Sie – auch ohne Vorkenntnisse – sofort und intuitiv loslegen.",
+        "en": "Thanks to the minimalist design, you can get started immediately and intuitively, even without any prior experience."
       },
       "feature3Title": {
         "de": "Schnelle Prototypenerstellung",
@@ -74,12 +74,12 @@
         "en": "Accelerate your workflow from weeks to minutes and create tangible prototypes that you can immediately experience in 3D."
       },
       "feature4Title": {
-        "de": "Kollaboratives Arbeiten",
-        "en": "Collaborative Work"
+        "de": "Direkte Einbeziehung des reellen Raums",
+        "en": "Direct Involvement of Real Space"
       },
       "feature4Description": {
-        "de": "Arbeiten Sie als Team in einem gemeinsamen virtuellen Raum, in dem alle Teilnehmer:innen in der Idee stehen, um Missverständnisse zu vermeiden.",
-        "en": "Work as a team in a shared virtual space where all participants stand inside the idea, eliminating misunderstandings and enhancing creativity."
+        "de": "Erweitern Sie reelle Objekte virtuell, um neue Perspektiven zu gewinnen und kreative Ideen zu entwickeln.",
+        "en": "Expand real objects virtually to gain new perspectives and develop creative ideas."
       }
     },
     "explorerPage": {
@@ -114,16 +114,16 @@
         "en": "What hardware do I need?"
       },
       "faq1Answer": {
-        "de": "Die Beta von Mind-Objects XR ist aktuell für die Meta Quest 2, 3 und Pro verfügbar. Wir planen, zukünftig weitere Plattformen zu unterstützen.",
-        "en": "The Mind-Objects XR beta is currently available for the Meta Quest 2, 3, and Pro. We are planning to support more platforms in the future."
+        "de": "Die Beta von Mind-Objects XR ist aktuell für die Meta Quest 2, 3 und Pro verfügbar. Am Logitech MX Ink Support wird gearbeitet.",
+        "en": "The Mind-Objects XR beta is currently available for the Meta Quest 2, 3, and Pro. Support for Logitech MX Ink is in progress."
       },
       "faq2Question": {
         "de": "Kann ich meine Skizzen exportieren?",
         "en": "Can I export my sketches?"
       },
       "faq2Answer": {
-        "de": "Ja, der Export Ihrer Kreationen hat für die Vollversion höchste Priorität. Wir arbeiten an gängigen 3D-Formaten wie GLB und OBJ für einen nahtlosen Workflow.",
-        "en": "Yes, exporting your creations is a top priority for the full version. We are working on common 3D formats like GLB and OBJ for a seamless workflow."
+        "de": "Ja, der Export Ihrer Kreationen hat für die Vollversion höchste Priorität. Wir unterstützen aktuell das GLB-Format für einen nahtlosen Workflow.",
+        "en": "Yes, exporting your creations is a top priority for the full version. We currently support the GLB format for a seamless workflow.."
       },
       "faq3Question": {
         "de": "Was kostet Mind-Objects XR?",
@@ -134,12 +134,12 @@
         "en": "Participation in the beta phase is completely free. We will announce the pricing model for the commercial release at a later date."
       },
       "faq4Question": {
-        "de": "Wie funktioniert die Kollaboration?",
-        "en": "How does collaboration work?"
+        "de": "Ist Kollaboration möglich?",
+        "en": "Is collaboration possible?"
       },
       "faq4Answer": {
-        "de": "Sie können einen privaten virtuellen Raum erstellen und Ihr Team über einen Code einladen. Im gemeinsamen Raum können alle in Echtzeit Objekte erstellen, bearbeiten und diskutieren.",
-        "en": "You can create a private virtual room and invite your team using a code. In the shared space, everyone can create, modify, and discuss objects in real-time."
+        "de": "In Zukunft können Sie mit anderen Benutzern in einem gemeinsamen virtuellen Raum zusammenarbeiten und Objekte in Echtzeit erstellen und diskutieren. Das Feature befindet sich aktuell noch in Entwicklung.",
+        "en": "In the future, you will be able to collaborate with other users in a shared virtual space and create and discuss objects in real-time. This feature is still under development at the moment."
       }
     },
     "footer": {
