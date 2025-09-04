@@ -1,7 +1,4 @@
-<script>
-    const path = window.location.pathname.toLowerCase();
-    const prefix = import.meta.env.PROD ? '/moxr' : '';
-    if (!path.startsWith(`${prefix}/de/`) && !path.startsWith(`${prefix}/en/`)) {
-        window.location.href = `${prefix}/de/`;
-    }
-</script>
+---
+import IndexPage from '../components/IndexPage.astro';
+---
+<IndexPage lang="de" />
