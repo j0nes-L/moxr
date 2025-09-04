@@ -8,7 +8,9 @@ const {lang, slug} = Astro.props;
 const otherLang = lang === 'de' ? 'en' : 'de';
 const otherLangPath = slug ? `/${slug}` : '';
 const prefix = import.meta.env.PROD ? '/moxr' : '';
-const otherLangUrl = `${prefix}/${otherLang}${otherLangPath}`;
+const otherLangUrl = otherLang === 'de'
+    ? `${prefix}/`
+    : `${prefix}/${otherLang}${otherLangPath}`;
 
 const langNames = {
     en: 'English',

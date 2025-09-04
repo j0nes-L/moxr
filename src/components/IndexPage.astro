@@ -1,0 +1,208 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro"
+import HeroMain from "./HeroMain.astro"
+import MOXRGlbExplorer from "./MOXRGlbExplorer.astro"
+import LanguageSwitch from "./languageSwitch.astro";
+import '../styles/main.css';
+import {urls} from "../config";
+import {i18nUtils} from '../i18n/i18nUtils.js';
+
+interface Props {
+    lang: 'de' | 'en';
+}
+
+const { lang } = Astro.props;
+
+const t = i18nUtils.getTranslations(lang);
+const pageTitle = t.common.siteTitle;
+const prefix = import.meta.env.PROD ? '/moxr' : '';
+const secondaryButtonHref = lang === 'de' ? `${prefix}/#explorer` : `${prefix}/${lang}/#explorer`;
+---
+<BaseLayout title={pageTitle}>
+    <div style="position: absolute; top: 1rem; right: 1rem; z-index: 10;">
+        <LanguageSwitch lang={lang} slug=""/>
+    </div>
+    <HeroMain slot="hero"
+              heading={t.indexPage.heroMain.heading}
+              subheading={t.indexPage.heroMain.subheading}
+              primaryButtonText={t.indexPage.heroMain.primaryButtonText}
+              primaryButtonHref={urls.metaBeta}
+              secondaryButtonText={t.indexPage.heroMain.secondaryButtonText}
+              secondaryButtonHref={secondaryButtonHref}/>
+    <section id="about">
+        <h3>{t.indexPage.aboutTitle}</h3>
+        <p>{t.indexPage.aboutParagraph1}</p>
+        <p>{t.indexPage.aboutParagraph2}</p>
+        <p>{t.indexPage.aboutParagraph3}</p>
+    </section>
+    <section id="features">
+        <h3>{t.indexPage.features.featuresTitle}</h3>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div>
+                    <h4>{t.indexPage.features.feature1Title}</h4>
+                    <p>{t.indexPage.features.feature1Description}</p>
+                </div>
+                <div class="feature-image-wrapper">
+                    <img src="https://placehold.co/200x200"
+                         data-gif="https://c.tenor.com/GdtADgzLdLUAAAAC/tenor.gif"
+                         class="feature-gif"/>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="feature-card">
+                <div>
+                    <h4>{t.indexPage.features.feature2Title}</h4>
+                    <p>{t.indexPage.features.feature2Description}</p>
+                </div>
+                <div class="feature-image-wrapper">
+                    <img src="https://placehold.co/200x200"
+                         data-gif="https://c.tenor.com/GdtADgzLdLUAAAAC/tenor.gif"
+                         class="feature-gif"/>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="feature-card-reverse">
+                <div class="feature-image-wrapper">
+                    <img src="https://placehold.co/200x200"
+                         data-gif="https://c.tenor.com/GdtADgzLdLUAAAAC/tenor.gif"
+                         class="feature-gif"/>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar"></div>
+                    </div>
+                </div>
+                <div>
+                    <h4>{t.indexPage.features.feature3Title}</h4>
+                    <p>{t.indexPage.features.feature3Description}</p>
+                </div>
+            </div>
+            <div class="feature-card-reverse">
+                <div class="feature-image-wrapper">
+                    <img src="https://placehold.co/200x200"
+                         data-gif="https://c.tenor.com/GdtADgzLdLUAAAAC/tenor.gif"
+                         class="feature-gif"/>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar"></div>
+                    </div>
+                </div>
+                <div>
+                    <h4>{t.indexPage.features.feature4Title}</h4>
+                    <p>{t.indexPage.features.feature4Description}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="explorer">
+        <h3>{t.indexPage.explorerTitle}</h3>
+        <MOXRGlbExplorer/>
+    </section>
+
+    <section id="faq-section">
+        <h3>{t.indexPage.faq.faqTitle}</h3>
+        <div class="faq-container">
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="true">
+                    {t.indexPage.faq.faq1Question}
+                </button>
+                <div class="faq-answer">
+                    <p>{t.indexPage.faq.faq1Answer}</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class_="faq-question" aria-expanded="false">
+                    {t.indexPage.faq.faq2Question}
+                </button>
+                <div class="faq-answer">
+                    <p>{t.indexPage.faq.faq2Answer}</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    {t.indexPage.faq.faq3Question}
+                </button>
+                <div class="faq-answer">
+                    <p>{t.indexPage.faq.faq3Answer}</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    {t.indexPage.faq.faq4Question}
+                </button>
+                <div class="faq-answer">
+                    <p>{t.indexPage.faq.faq4Answer}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div slot="footer-main">
+        <img src="/assets/favicon.svg" " alt="Logo Mind-Objects" draggable="false" style="height: 100px;"/>
+        <p><a href={urls.mindObjectsImprint} target="_blank">{t.indexPage.footer.legalNotice}</a></p>
+    </div>
+    <div slot="footer-bottom">
+        <p>{t.indexPage.footer.websiteDesignedBy}<a href={urls.icuMedia} target="_blank">icu-media </a></p>
+    </div>
+</BaseLayout>
+<script is:inline>
+    const featureCards = document.querySelectorAll('.feature-card, .feature-card-reverse');
+    const images = document.querySelectorAll('.feature-gif');
+    const placeholders = Array.from(images).map(img => img.src);
+    const gifs = Array.from(images).map(img => img.dataset.gif);
+    let currentIndex = 0;
+    const intervalTime = 3000; // 3 seconds
+
+    function playNext() {
+        // Remove 'active' class from all cards to reset progress bars
+        featureCards.forEach(card => card.classList.remove('active'));
+
+        // Reset previous image to its placeholder
+        const prevIndex = (currentIndex - 1 + featureCards.length) % featureCards.length;
+        images[prevIndex].src = placeholders[prevIndex];
+
+        // Set the current image to its GIF and add 'active' class to its card
+        if (images[currentIndex]) {
+            images[currentIndex].src = gifs[currentIndex];
+            // We need to force a reflow for the CSS animation to restart.
+            // A common trick is to access offsetHeight.
+            void featureCards[currentIndex].offsetHeight;
+            featureCards[currentIndex].classList.add('active');
+        }
+
+        // Move to the next index
+        currentIndex = (currentIndex + 1) % images.length;
+    }
+
+    // Play the first one immediately
+    playNext();
+
+    // Then cycle
+    setInterval(playNext, intervalTime);
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const faqQuestions = document.querySelectorAll('.faq-question');
+
+        faqQuestions.forEach((question, index) => {
+            const answer = question.nextElementSibling; // The div with the answer
+
+            // Open the first one by default
+            if (index === 0) {
+                question.setAttribute('aria-expanded', 'true');
+                answer.style.display = 'block';
+            } else {
+                question.setAttribute('aria-expanded', 'false');
+                answer.style.display = 'none';
+            }
+
+            question.addEventListener('click', () => {
+                const isExpanded = question.getAttribute('aria-expanded') === 'true';
+                question.setAttribute('aria-expanded', String(!isExpanded));
+                answer.style.display = isExpanded ? 'none' : 'block';
+            });
+        });
+    });
+</script>
