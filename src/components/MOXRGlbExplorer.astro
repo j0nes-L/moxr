@@ -10,6 +10,11 @@ const {urls} = Astro.props;
     <div id="load-more-container"></div>
 </div>
 
+<div id="iframe-container" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); z-index: 1000;">
+    <iframe id="viewer-iframe" style="width: 90%; height: 90%; border: none; position: absolute; top: 5%; left: 5%;"></iframe>
+    <button id="close-iframe" style="position: absolute; top: 10px; right: 10px; color: white; background: black; border: 1px solid white; padding: 5px 10px;">Close</button>
+</div>
+
 <script>
     let allFiles = [];
     let baseUrl = '';
@@ -69,6 +74,30 @@ const {urls} = Astro.props;
         }
     };
 
+    const iframeContainer = document.getElementById('iframe-container');
+    const viewerIframe = document.getElementById('viewer-iframe');
+    const closeIframeButton = document.getElementById('close-iframe');
+
+    function openViewer(url) {
+        viewerIframe.src = url;
+        iframeContainer.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeViewer() {
+        viewerIframe.src = '';
+        iframeContainer.style.display = 'none';
+        document.body.style.overflow = '';
+    }
+
+    closeIframeButton.addEventListener('click', closeViewer);
+
+    iframeContainer.addEventListener('click', (e) => {
+        if (e.target === iframeContainer) {
+            closeViewer();
+        }
+    });
+
     function formatFile(file) {
         const filename = file.filename;
         const parts = filename.split('_');
@@ -117,8 +146,9 @@ const {urls} = Astro.props;
             const t = translations[currentLang] || translations.en;
             const col = document.createElement("div");
             col.className = "card-Explorer";
+            const viewerUrl = `https://j0nes-l.github.io/moxr-glb-viewer/?file=${filename}`;
             col.innerHTML = `
-          <a href="https://j0nes-l.github.io/moxr-glb-viewer/?file=${filename}" class="card-explorer-link" target="_blank" rel="noopener noreferrer">
+          <a href="${viewerUrl}" class="card-explorer-link">
             <p class="card-img-text">${t.clickToView}</p>
             <img src="${thumbnailUrl}" class="card-img-top" alt="Thumbnail for ${filename}" draggable="false" style="user-select: none; -webkit-user-drag: none;" loading="lazy" />
           </a>
@@ -126,11 +156,17 @@ const {urls} = Astro.props;
               <div class="card-text">
               <p class="card-title" title="${filename}">${t.sketchFrom} ${daysAgo}</p>
               <p class="card-description">${creator}</p>
-              <a href="https://j0nes-l.github.io/moxr-glb-viewer/?file=${filename}" class="card-explorer-btn" target="_blank" rel="noopener noreferrer">
+              <a href="${viewerUrl}" class="card-explorer-btn">
                   <p class="card-btn-text">${t.viewIn3D}</p>
                 </a>
           </div>
     `;
+            col.querySelectorAll('a').forEach(a => {
+                a.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    openViewer(a.href);
+                });
+            });
             grid.appendChild(col);
         });
     }
