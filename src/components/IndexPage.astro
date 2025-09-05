@@ -6,12 +6,13 @@ import LanguageSwitch from "./languageSwitch.astro";
 import '../styles/main.css';
 import {urls} from "../config";
 import {i18nUtils} from '../i18n/i18nUtils.js';
+import {YouTube} from '@astro-community/astro-embed-youtube';
 
 interface Props {
     lang: 'de' | 'en';
 }
 
-const { lang } = Astro.props;
+const {lang} = Astro.props;
 
 const t = i18nUtils.getTranslations(lang);
 const pageTitle = t.common.siteTitle;
@@ -29,6 +30,13 @@ const secondaryButtonHref = lang === 'de' ? `${prefix}/#explorer` : `${prefix}/$
               primaryButtonHref={urls.metaBeta}
               secondaryButtonText={t.indexPage.heroMain.secondaryButtonText}
               secondaryButtonHref={secondaryButtonHref}/>
+
+    <section id="trailer">
+        <iframe class="trailer"
+                src={`https://www.youtube-nocookie.com/embed/${urls.moxrYtTrailerID}?rel=0&controls=1&modestbranding=1&iv_load_policy=3&playsinline=1&enablejsapi=1`}
+                title="YouTube video player" frameborder="0" allow="autoplay; encrypted-media; gyroscope;"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </section>
     <section id="about">
         <h3>{t.indexPage.aboutTitle}</h3>
         <p>{t.indexPage.aboutParagraph1}</p>

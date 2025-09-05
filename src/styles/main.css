@@ -235,6 +235,14 @@ section {
     background-color: var(--color-Primary);
 }
 
+/* trailer */
+.trailer {
+    position: relative;
+    aspect-ratio: 16/9;
+    height: 50vh;
+    margin: 0 auto;
+}
+
 /* explorer */
 .container-Explorer {
     max-width: 1200px;
