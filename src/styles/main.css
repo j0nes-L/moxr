@@ -158,10 +158,22 @@ section {
     padding: 4rem 1rem;
 }
 
+#about h3 {
+    margin: 0 0 1rem 0;
+}
 
-#about p {
-    max-width: 60ch;
-    margin: 0 auto;
+#about .about-content {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+}
+
+#about .about-text {
+    flex-basis: 33.33%;
+}
+
+#about .about-video {
+    flex-basis: 66.67%;
 }
 
 
@@ -241,12 +253,22 @@ section {
     justify-content: center;
     align-items: center;
 }
+
 .trailer {
     position: relative;
     aspect-ratio: 16/9;
-    height: 50vh;
+    width: 100%;
     border-radius: 1rem;
     overflow: hidden;
+}
+
+@media (max-width: 1300px) {
+    #about .about-content {
+        flex-direction: column;
+    }
+    .trailer {
+        width: calc(100vw - 5rem);
+    }
 }
 
 /* explorer */
@@ -459,7 +481,7 @@ section {
     border-radius: 0.5rem;
 }
 
-.feature-card h4, .feature-card p{
+.feature-card h4, .feature-card p {
     padding-left: 1rem;
 }
 
