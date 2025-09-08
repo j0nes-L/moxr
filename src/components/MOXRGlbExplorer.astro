@@ -11,8 +11,8 @@ const {urls} = Astro.props;
 </div>
 
 <div id="iframe-container" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); z-index: 1000;">
-    <iframe id="viewer-iframe" style="width: 90%; height: 90%; border: none; position: absolute; top: 5%; left: 5%;"></iframe>
-    <button id="close-iframe" style="position: absolute; top: 10px; right: 10px; color: white; background: black; border: 1px solid white; padding: 5px 10px;">X</button>
+    <iframe id="viewer-iframe" title="3D model viewer" style="width: 90%; height: 90%; border: none; position: absolute; top: 5%; left: 5%;"></iframe>
+    <button id="close-iframe" class="close-iframe-btn" aria-label="Close 3D viewer">X</button>
 </div>
 
 <script>

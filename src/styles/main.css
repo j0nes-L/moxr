@@ -362,6 +362,36 @@ section {
     font-size: 0.8rem;
 }
 
+/* Iframe Viewer Styles */
+.close-iframe-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    z-index: 1010;
+    background-color: var(--color-Primary);
+    color: var(--color-Secondary);
+    border: 2px solid var(--color-Secondary);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    line-height: 1;
+}
+
+.close-iframe-btn:hover {
+    background-color: var(--color-white);
+    border-color: var(--color-white);
+    color: var(--color-Primary);
+    transform: scale(1.05);
+    transition: all 0.2s ease-in-out;
+}
 
 /*Styling for Explorer cards on smaller screens*/
 @media (max-width: 768px) {
