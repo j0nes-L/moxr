@@ -98,6 +98,12 @@ const {urls} = Astro.props;
         }
     });
 
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            closeViewer();
+        }
+    });
+
     function formatFile(file) {
         const filename = file.filename;
         const parts = filename.split('_');
